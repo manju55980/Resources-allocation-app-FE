@@ -1,0 +1,54 @@
+<div class="container  mt-3">
+<h2 class="text-center">Create Projects</h2>
+<div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6 col-md-offset-3">
+        <div class="jumbotron">
+          
+        <form #project="ngForm"  (ngSubmit)="postproject(project.value)"> 
+            <div class="form-control">
+                <label for="name">Enter Name</label>
+                <input type="text" ngModel name="name" required autocomplete="off" class="form-control input-sm" placeholder="Project Name">&nbsp;
+                </div>&nbsp;
+            <div class="form-control">
+                <label for="desc">Discription</label>
+                <input type="text" ngModel name="desc" required autocomplete="off" class="form-control input-sm" placeholder="Project Discription">&nbsp;
+            </div>&nbsp;
+            <div class="form-control input-sm">
+               <div> <label for="label">Select Labels</label>
+                <select class="form-select" ngModel name="labelId" aria-label="Default select example "required>
+                  <option value="" selected disabled>Select Labels</option>
+                  <option *ngFor="let user of labels" value="{{user.id}}">
+                    {{user.labelname}}
+                  </option></select></div>
+                <div> <button (click)="onclicklabel()"  class="display btn btn-success ">Add labels</button></div> 
+              </div>&nbsp;
+              <div class="form-control input-sm">
+                <label for="label">Select Category</label>
+                <div>
+                <select class="form-select" ngModel name="categoryId" aria-label="Default select example "required>
+                  <option value=""disabled selected>Select Labels</option>
+                  <option *ngFor="let user of categories" value="{{user.id}}">
+                    {{user.categoriesName}}
+                  </option>
+              </select>
+            </div><div><button (click)="onclickcate()" class="btn btn-success">Add categories</button></div>
+              </div>&nbsp;
+              <div class="form-control input-sm">
+                <label for="role">Select status</label>
+                <select class="form-select"ngModel name="status" required aria-label="Default select example ">
+                  <option value="" selected disabled>Select Status</option>
+                  <option value="inprogress">In progress</option>
+                  <option value="closed">Closed</option>
+                  <option value="open">Open</option>
+                </select>&nbsp;
+              </div>&nbsp;
+              <button type="submit" [disabled]="!project.valid" class="btn btn-success">Add Projects</button>&nbsp;
+        </form>
+        
+       
+        </div>
+      </div>
+    </div>
+  </div>

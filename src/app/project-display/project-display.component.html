@@ -1,0 +1,59 @@
+<div class="container  mt-3 px-4 px-lg-5">
+<!-- <div class="row">
+    
+    <div class="col ">
+<div class="table-responsive-md">
+    <table class="table table-bordered ">
+      <thead class="">
+        <tr>
+          <th scope="col">Project Name</th>
+          
+          <th scope="col">Discription</th>
+          
+          <th scope="col">Status</th>
+        
+          <th scope="col">Action</th>
+        </tr>
+    </thead>
+      <tbody>
+        <tr *ngFor=" let project of projects" class="table-striped" >
+           <a routerLink="projectTask/{{project.id}}" routerLinkActive="active"><th>{{project.name}}</th> </a>&nbsp;&nbsp;&nbsp;
+           
+          <th>{{project.desc}}</th>
+          <th ><button class="btn btn-success" [ngClass]="{'open-project': project.status === 'open',
+            'in-progress-project': project.status === 'inprogress'}">{{project.status}}</button></th>
+          <th>
+            <a routerLink="/projectEdit/{{project.id}}">
+               <button class="btn btn-success">Edit</button>
+            </a>
+        </th>
+          </tr>
+         
+      </tbody>
+      
+    </table>
+    <div><button routerLink="projects"routerLinkActive="active" class="btn btn-success"> Add Project</button></div>
+</div>
+  </div>
+</div> -->
+<div class="card text-white bg-secondary my-5 py-4 text-center">
+  <div class="card-body"><h2 class="text-white m-0">Projects </h2></div>
+</div>
+
+<div class="row gx-4 gx-lg-5">
+  <div class="col-md-4 mb-5" *ngFor="let project of projects" >
+
+<div class="card h-100" >
+  <div class="card-body">
+    <a routerLink="projectTask/{{project.id}}" routerLinkActive="active"><h3 class="card-title">{{ project.name }}</h3></a>
+    <p class="card-text">{{ project.desc}}</p>
+    <p class="card-text"><strong>Status: </strong><span class="badge" [ngClass]="{'open-project': project.status === 'open',
+      'in-progress-project': project.status === 'inprogress'}">{{project.status}}</span></p>
+    <a routerLink="/projectEdit/{{project.id}}">
+      <button class="btn btn-success">Upadte</button>
+   </a>
+  </div>
+</div>
+</div>
+</div>
+</div>

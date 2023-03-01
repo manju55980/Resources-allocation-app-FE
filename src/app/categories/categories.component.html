@@ -1,0 +1,17 @@
+<div class="conatiner  mt-3">
+<h2 class="text-center">Categories</h2>
+<div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6 col-md-offset-3">
+        <div class="jumbotron">
+        <form #categories="ngForm"  (ngSubmit)="postcategories(categories.value)"> 
+            <div class="form-group">
+                <label for="label">Enter Categories</label>
+                <input type="text" ngModel name="categoriesName" required autocomplete="off" class="form-control input-sm" placeholder="Categories">&nbsp;
+                </div>
+                <button type="submit" class="btn btn-success">Add Categories</button>
+        </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="container  mt-3">
+<h2 class="text-center">Labels</h2>
+<div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6 col-md-offset-3">
+        <div class="jumbotron">
+        <form #labels="ngForm"  (ngSubmit)="postlabel(labels.value)"> 
+            <div class="form-group">
+                <label for="label">Enter Label</label>
+                <input type="text" ngModel name="labelname" required autocomplete="off" class="form-control input-sm" placeholder="Labels">&nbsp;
+                </div>
+                <button type="submit" class="btn btn-success">Add Label</button>
+        </form>
+        </div>
+    </div>
+</div>

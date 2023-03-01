@@ -1,0 +1,8 @@
+/* .element-class {
+  background-image: url('../assets/image-file-name.jpg');
+  background-size: cover;
+  background-position: center;
+} */
+.container{
+  height: 800px;
+}

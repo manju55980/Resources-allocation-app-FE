@@ -1,0 +1,166 @@
+<div class="row text-center mt-3">
+  <div class="col-md-5">
+    <div class="btn-group">
+      <div class="btn btn-primary" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate">
+        Previous
+      </div>
+      <div class="btn btn-outline-secondary" mwlCalendarToday [(viewDate)]="viewDate">
+        Today
+      </div>
+      <div class="btn btn-primary" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate">
+        Next
+      </div>
+    </div>
+  </div>&nbsp;&nbsp;
+  <div class="col-md-6">
+    <div class="btn-group">
+      <div class="btn btn-primary" (click)="setView(CalendarView.Month)" [class.active]="view === CalendarView.Month">
+        Month
+      </div>
+      <div class="btn btn-primary" (click)="setView(CalendarView.Week)" [class.active]="view === CalendarView.Week">
+        Week
+      </div>
+      <div class="btn btn-primary" (click)="setView(CalendarView.Day)" [class.active]="view === CalendarView.Day">
+        Day
+      </div>
+    </div>
+
+  </div>
+
+</div>&nbsp;
+
+
+<div class="container"  *ngIf="assign()">
+  <div class="row align-items-center">
+   
+      <label class="form-label" for="user">Select Users To View Task</label>
+      <div class="col-4">
+      <select [(ngModel)]="userId" class="form-select" aria-label="Default select example ">
+        <option value="" disabled selected>Select an option</option>
+        <option *ngFor="let user of userdata" value="{{user.id}}">
+           {{user.firstname}}
+        </option>
+    </select>
+  </div><div class="col-4">
+    <button (click)="handleclick(userId)" class="btn btn-success">Show Tasks</button>           
+  </div>
+ <div class="table-responsive-md">&nbsp;
+   <table class="table table-bordered ">
+        <thead >
+          <tr>
+            <th scope="col">Tasks</th>          
+            <th scope="col"></th>
+            <th scope="col">Start Date</th>
+            <th scope="col"></th>
+            <th scope="col">End Date</th>
+            <th scope="col"></th>
+            <th scope="col">Start Time</th>
+            <th scope="col"></th>
+            <th scope="col">End Time</th>
+            <th scope="col"></th>
+            <th scope="col">Del OR Update</th>
+
+          </tr>
+
+        </thead>
+        <tbody>
+          <tr *ngFor=" let task of currenttask" [ngClass]="{'red':task.enddate< currentDate}">
+            <th>{{task.taskurl}}</th>&nbsp;&nbsp;&nbsp;
+            <th>{{task.startdate}}</th>&nbsp;&nbsp;&nbsp;
+            <th>{{task.enddate}}</th>&nbsp;&nbsp;&nbsp;
+            <th>{{task.starttime}}</th>&nbsp;&nbsp;&nbsp;
+            <th>{{task.endtime}}</th>&nbsp;&nbsp;&nbsp;
+            <th><button (click)="delete(task.id)" class="btn btn-danger">Del</button>&nbsp;
+              <a routerLink="/tasklist/{{task.id}}">
+                 <button class="btn btn-success">Update</button>
+              </a>
+            </th>
+            </tr>
+           
+        </tbody>
+       
+      </table>
+      
+    </div>
+
+  </div>
+  
+</div>
+
+
+<div [ngSwitch]="view">
+
+  <mwl-calendar-month-view *ngSwitchCase="CalendarView.Month" [viewDate]="viewDate" [events]="events">
+  </mwl-calendar-month-view>
+
+  <mwl-calendar-week-view *ngSwitchCase="CalendarView.Week" [viewDate]="viewDate" [events]="events" >
+  </mwl-calendar-week-view>
+
+  <mwl-calendar-day-view *ngSwitchCase="CalendarView.Day" [viewDate]="viewDate" [events]="events">
+  </mwl-calendar-day-view>
+
+</div>
+<!-- <h3>
+
+  Edit events
+
+  <div class="clearfix"></div>
+</h3>
+
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Starts at</th>
+        <th>Ends at</th>
+        <th>Remove</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let event of events">
+        <td>
+          <input type="text" class="form-control" [(ngModel)]="event.title" (keyup)="refresh.next()" />
+        </td>
+
+        <td>
+          <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="event.start"
+            (ngModelChange)="refresh.next()" dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="Not set" />
+        </td>
+        <td>
+          <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="event.end" (ngModelChange)="refresh.next()"
+            dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="Not set" />
+        </td>
+        <td>
+          <button class="btn btn-danger" (click)="deleteEvent(event)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #modalContent let-close="close">
+  <div class="modal-header">
+    <h5 class="modal-title">Event action occurred</h5>
+    <button type="button" class="close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div>
+      Action:
+      <pre>{{ modalData?.action }}</pre>
+    </div>
+    <div>
+      Event:
+      <pre>{{ modalData?.event | json }}</pre>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="close()">
+      OK
+    </button>
+  </div>
+</ng-template> -->

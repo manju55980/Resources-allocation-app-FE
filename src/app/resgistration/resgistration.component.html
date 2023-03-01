@@ -1,0 +1,54 @@
+<div class="container  mt-3">
+<h2 class="text-center">Registration</h2>
+<div class="row">
+<div class="col-md-3">
+</div>
+<div class="col-md-6 col-md-offset-3">
+<div class="jumbotron">
+    <div *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Success !</strong> Registered  Successufully!
+        <button (click)="closebtn()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+<form  #Regispost="ngForm" (ngSubmit)="postdata(Regispost.value)">
+<div class="form-control">
+<label class="label" for="name">First name</label>
+<input type="text" ngModel name="firstname"  autocomplete="off" class="form-control input-sm" placeholder="Firstname" required>&nbsp;
+</div>&nbsp;
+<div class="form-control">
+    <label for="name">last name</label>
+    <input type="text" ngModel name="lastname"  autocomplete="off" class="form-control input-sm" placeholder="Lastname" required>&nbsp;
+</div>&nbsp;
+
+<div class="form-control">
+<label for="name">Enter Email</label>
+<input type="text" ngModel name="email"  autocomplete="off" class="form-control input-sm" placeholder="Email" required>&nbsp;
+</div>&nbsp;
+<div class="form-control">
+<label for="Password">Password</label>&nbsp;
+<input type="password" ngModel name="password"  autocomplete="off" class="form-control input-sm" placeholder="Password" required>&nbsp;
+</div>&nbsp;
+<div class="form-control">
+    <label for="Password">Confirm Password</label>&nbsp;
+    <input type="password" ngModel name="confirm"  autocomplete="off" class="form-control input-sm" placeholder="Confirm Password" required>&nbsp;
+</div>&nbsp;
+<div class="form-control input-sm">
+    <label for="role">Select Role</label>
+    <select class="form-select"ngModel name="role"  aria-label="Default select example " required>
+      <option value="" disabled selected>Select an option</option>
+      <option value="Manager">Manager</option>
+      <option value="Developer">Developers</option>
+      
+  </select>&nbsp;
+  </div>&nbsp;
+  
+<button [disabled]="!Regispost.valid" type="submit" class="btn btn-success">Register</button>
+</form>
+</div>
+</div>
+<div class="col-md-3">
+</div>
+</div>
+</div>
+<!--  -->

@@ -1,0 +1,119 @@
+<div class="container  mt-5 px-4 px-lg-5">
+<div class="col">
+<div class="table-responsive-md">
+  <div class="card text-white bg-secondary my-1 py-2 text-center">
+    <div class="card-body"><h2 class="text-white m-0">Open Tasks </h2></div>
+  </div>
+      <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Tasks</th>
+          
+          <th scope="col">Start Date</th>
+          
+          <th scope="col">End Date</th>
+        
+          <th scope="col">status</th>
+          <!-- <th scope="col"></th>
+          <th scope="col">Asigneee</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let task of task ">
+            <tr *ngIf="task.status ==='open'">
+          <a routerLink="/tasklist/{{task.id}}"><th>{{task.taskurl}}</th></a>
+         
+          <th>{{task.startdate}}</th>
+          <th>{{task.enddate}}</th>
+          <th>{{task.status}}</th>
+          <!-- <th><button type="button" class="close" data-dismiss="alert" aria-label="close">close
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </th> -->
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+      <div class="card text-white bg-secondary my-1 py-2 text-center">
+        <div class="card-body"><h2 class="text-white m-0">In progress </h2></div>
+      </div>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Tasks</th>
+            
+            <th scope="col">Start Date</th>
+            
+            <th scope="col">End Date</th>
+        
+            <th scope="col">status</th>
+            <!-- <th scope="col"></th>
+            <th scope="col">Asigneee</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let task of task">
+           <tr *ngIf="task.status ==='inprogress'">
+            <a routerLink="/tasklist/{{task.id}}"><th>{{task.taskurl}}</th></a>
+            
+            <th>{{task.startdate}}</th>
+            <th>{{task.enddate}}</th>
+            <th>{{task.status}}</th>
+            <!-- <th><button type="button" class="close" data-dismiss="alert" aria-label="close">close
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </th> -->
+           </tr>
+          </ng-container>
+          </tbody>
+        </table>
+        <div class="card text-white bg-secondary my-1 py-2 text-center">
+          <div class="card-body"><h2 class="text-white m-0">Closed </h2></div>
+        </div>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Tasks</th>
+              
+              <th scope="col">Start Date</th>
+            
+              <th scope="col">End Date</th>
+             
+              <th scope="col">status</th>
+              <!-- <th scope="col"></th>
+              <th scope="col">Asigneee</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let task of task">
+             <tr *ngIf="task.status==='close'">
+              <a routerLink="/tasklist/{{task.id}}"><th>{{task.taskurl}}</th></a>
+              
+              <th>{{task.startdate}}</th>
+              <th>{{task.enddate}}</th>
+              <th>{{task.status}}</th>
+              <!-- <th><button type="button" class="close" data-dismiss="alert" aria-label="close">close
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </th> -->
+             </tr>
+            </ng-container>
+            </tbody>
+          </table>
+    <button class="btn btn-success" routerLink="/taskassg" routerLinkActive="active">Create new task</button>
+    
+</div>
+</div>
+<!-- <div class="row gx-4 gx-lg-5">
+  <div class="col-md-4 mb-5" *ngFor="let task of task">
+<div class="card h-100" *ngIf="task.status==='close'" >
+  <div class="card-body">
+    <a routerLink="/tasklist/{{task.id}}"><h4>{{task.taskurl}}</h4></a>
+    <p class="card-text">{{ task.taskurl}}</p>
+    <p class="card-text">{{task.startdate}}</p>
+    <p class="card-text">{{task.enddate}}</p>
+  </div>
+</div>
+  </div>
+</div> -->
+</div>

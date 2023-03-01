@@ -1,0 +1,10 @@
+.container{
+    height: 800px;
+}
+.open-project {
+    background-color: #17b82c;
+  }
+  
+  .in-progress-project {
+    background-color: #f7815d;
+  }

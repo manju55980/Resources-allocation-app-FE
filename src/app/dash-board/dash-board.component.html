@@ -1,0 +1,30 @@
+<div class="container px-4 px-lg-5">
+    <!-- Heading Row-->
+    <div class="row gx-4 gx-lg-5 align-items-center my-5">
+         <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="https://dummyimage.com/900x400/dee2e6/6c757d.jpg" alt="..." /></div> 
+        <div class="col-lg-5">
+            <h1 class="font-weight-light">Task Master</h1>
+            <p> Welcome to our task allocation app dashboard! Our app is designed to help you and your team efficiently manage your tasks and project, With our app, you can easily create new tasks and assign them to team members. You can set due dates and prioritize tasks, ensuring that everyone stays on track and meets their deadlines. You can also add notes and attachments to tasks, providing additional context and information to team members</p>
+            <a class="btn btn-primary" routerLink="/calendarview" routerLinkActive="active">Open Calendar view</a>
+        </div>
+    </div>
+    <!-- Call to Action-->
+    <div class="card text-white bg-secondary my-5 py-4 text-center">
+        <div class="card-body"><p class="text-white m-0">Below is a list of projects that our team is currently working on. These projects cover a range of areas, from product development to marketing initiatives, and are all aimed at helping our organization achieve its goals and objectives. Each project has a unique scope and timeline, and our team is committed to delivering high-quality results on time and within budget</p></div>
+    </div>
+    <!-- Content Row-->
+    <div class="row gx-4 gx-lg-5" >
+        <div class="col-md-4 mb-5" *ngFor="let project of projectData">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title">{{project.name}}</h2>
+                    <p class="card-text">{{project.desc}}</p>
+                </div>
+                <div class="card-footer"><a class="btn btn-primary btn-sm" routerLink="/projectDisplay">More Info</a></div>
+            </div>
+        </div>  
+    </div>
+  </div>
+  <!-- <div #ganttContainer class="gantt-container">
+
+  </div> -->

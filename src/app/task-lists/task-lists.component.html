@@ -1,0 +1,80 @@
+<div class="container mt-3">
+<h2 class="text-center">Edit Task</h2>
+<div class="row">
+<div class="col-md-3">
+</div>
+<div class="col-md-6 col-md-offset-3">
+<div class="jumbotron">
+  <div *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Success !</strong> Task Edited  Successufully!
+    <button (click)="closebtn()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<form #edit="ngForm" (ngSubmit)="puttask(edit.value)">
+<div class="form-control">
+<label for="task">Task</label>
+<input type="text" name="taskurl" ngModel autocomplete="off" class="form-control input-sm" placeholder="Enter task"required>&nbsp;
+</div>&nbsp;
+<div class="form-control">
+    <label for="date">Start Date</label>
+    <input type="date" name="startdate" ngModel autocomplete="off" class="form-control input-sm"  placeholder="Start Date"required>&nbsp;
+</div>&nbsp;
+
+<div class="form-control">
+    <label for="date">End Date</label>
+    <input type="date" name="enddate" ngModel autocomplete="off" class="form-control input-sm" placeholder="End Date"required>&nbsp;
+</div>&nbsp;
+<div class="form-control">
+    <label for="time">Start Time</label>
+    <input type="time"  name="starttime" [(ngModel)]="starttime" autocomplete="off" class="form-control input-sm" placeholder="Start Time"required>&nbsp;
+</div>&nbsp;
+<div class="form-control">
+    <label for="time">End Time</label>
+    <input type="time" name="endtime"[(ngModel)]="endtime"  autocomplete="off" class="form-control input-sm" placeholder="End Time"required>&nbsp;
+</div>&nbsp;
+<div class="from-control" *ngIf="starttime>=endtime">
+  <p class="text-danger"> Warning! Start time  Cannot be greater than end time</p>
+</div>
+<div class="form-control input-sm">
+  <label for="role">Select status</label>
+  <select class="form-select"ngModel name="status" required aria-label="Default select example "required>
+    <option selected disabled>Select status</option>
+    <option value="inprogress">In progress</option>
+    <option value="close">Closed</option>
+    <option value="open">Open</option>
+  </select>&nbsp;
+</div>&nbsp;
+  <div class="form-control input-sm">
+    <label for="priority">Select priority </label>
+    <select class="form-select" ngModel name="setPriority"  aria-label="Default select example "required>
+      <option value="low">Low</option>
+      <option value="medium">Medium</option>
+      <option value="high" >High</option>
+  </select>&nbsp;
+</div>&nbsp;
+<div class="form-control input-sm">
+  <label for="user">Selected User </label>
+  <select class="form-select" ngModel name="userTableId" aria-label="Default select example "required>
+    <option selected disabled>Select Users For Task</option>
+    <option *ngFor="let user of users" value="{{user.id}}">
+      {{user.firstname}}
+    </option>
+</select>&nbsp;
+</div>&nbsp;
+<div class="form-control input-sm">
+  <label for="user">Select Projects</label>
+  <select class="form-select" ngModel name="projectId" aria-label="Default select example "required>
+    <option selected disabled>Select project For Task</option>
+    <option *ngFor="let user of project" value="{{user.id}}">
+      {{user.name}}
+    </option>
+</select>&nbsp;
+</div>
+<button  type="submit" [disabled]="starttime>=endtime && !edit.valid"  class="btn btn-success">Update</button>&nbsp;
+</form>
+
+</div>
+</div>
+</div>
+</div>
